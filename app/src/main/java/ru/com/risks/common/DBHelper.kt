@@ -25,7 +25,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
     }
 
     companion object {  //Статики
-        private var DATABASE_VERSION = 1
+        private var DATABASE_VERSION = 2
         private var DATABASE_NAME = "db_main"
         lateinit var instance: DBHelper;
     }
