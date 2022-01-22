@@ -19,13 +19,17 @@ import java.util.*
 class SettingUpMinimizationMeasureFragment : Fragment(), View.OnClickListener {
 
     lateinit var currentMinimizationMeasure: MinimizationMeasure
-
+    var create = false;
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         loadData()
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?,): View {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         val view: ViewGroup = inflater.inflate(R.layout.fragment_setting_up_minimization_measure, container, false) as ViewGroup
 
 
@@ -117,6 +121,7 @@ class SettingUpMinimizationMeasureFragment : Fragment(), View.OnClickListener {
             R.id.checkBoxMinimizationMeasureRegular->{
                 val checkBox = this.view!!.findViewById<CheckBox>(R.id.checkBoxMinimizationMeasureRegular)
                 hideRegularView(this.view!! as ViewGroup, !checkBox.isChecked)
+                this.create = checkBox.isChecked
             }
             R.id.buttonMinimizationMeasureSave->{
                 @SuppressLint("SimpleDateFormat") val format = SimpleDateFormat("dd.MM.yyyy")
@@ -132,6 +137,52 @@ class SettingUpMinimizationMeasureFragment : Fragment(), View.OnClickListener {
                 }
                 this.currentMinimizationMeasure.date = format.parse(view!!.findViewById<TextView>(R.id.dateViewMinimizationMeasureTheDateOfThe).text.toString())!!
                 DBHelper.instance.saveMinimizationMeasure(currentMinimizationMeasure)
+                if (this.create) {
+
+                    val cal = Calendar.getInstance()
+                    cal.time = currentMinimizationMeasure.date
+
+                    when (this.currentMinimizationMeasure.interval) {
+                        Interval.DAY -> {
+                            cal.add(Calendar.DAY_OF_MONTH, 1)
+                        }
+                        Interval.WEEK -> {
+                            cal.add(Calendar.WEEK_OF_MONTH, 1)
+                        }
+                        Interval.DECADE -> {
+                            cal.add(Calendar.DAY_OF_MONTH, 10)
+                        }
+                        Interval.MONTH -> {
+                            cal.add(Calendar.MONTH, 1)
+                        }
+                        Interval.QUARTER->{
+                            cal.add(Calendar.MONTH, 3)
+                        }
+                        Interval.TRIMESTER->{
+                            cal.add(Calendar.MONTH, 4)
+                        }
+                        Interval.HALF_YEAR->{
+                            cal.add(Calendar.MONTH, 6)
+                        }
+                        Interval.YEAR->{
+                            cal.add(Calendar.YEAR, 6)
+                        }
+
+
+                    }
+
+                    val minimizationMeasure = MinimizationMeasure(
+                        -1,
+                        currentMinimizationMeasure.risk,
+                        currentMinimizationMeasure.name,
+                        currentMinimizationMeasure.more,
+                        currentMinimizationMeasure.responsible,
+                        cal.time,
+                        currentMinimizationMeasure.interval,
+                        false
+                    )
+                    DBHelper.instance.saveMinimizationMeasure(minimizationMeasure)
+                }
                 val bundle = Bundle()
                 bundle.putInt("index", this.currentMinimizationMeasure.risk.id)
                 val fragment = SettingUpRiskFragment()
@@ -149,7 +200,7 @@ class SettingUpMinimizationMeasureFragment : Fragment(), View.OnClickListener {
         var date2 = cal.time
 
 
-        if ((!this.currentMinimizationMeasure.closed && date1<=this.currentMinimizationMeasure.date && date2<=this.currentMinimizationMeasure.dateOfCreation) || this.currentMinimizationMeasure.id==-1) return;
+        if ((!this.currentMinimizationMeasure.closed && date1>=this.currentMinimizationMeasure.date && date2<=this.currentMinimizationMeasure.dateOfCreation) || this.currentMinimizationMeasure.id==-1) return;
 
         view.findViewById<TextView>(R.id.textViewMinimizationMeasureName).isEnabled = false
         view.findViewById<TextView>(R.id.dateViewMinimizationMeasureTheDateOfThe).isEnabled = false
