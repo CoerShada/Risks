@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".client.risks.SettingUpMinimizationMeasureFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="9">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            app:cardBackgroundColor="@color/light_gray"
+            app:cardCornerRadius="7dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/textViewMinimizationMeasureName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2.5dp"
+                    android:layout_marginBottom="2.5dp"
+                    android:ems="10"
+                    android:hint="@string/name"
+                    android:importantForAutofill="no"
+                    android:inputType="textPersonName"
+                    android:minHeight="48dp"
+                    android:textColor="@color/white" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:hint="@string/description"
+                    app:placeholderText="@string/description">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/textViewMinimizationMeasureMore"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top|left"
+                        android:layout_marginTop="2.5dp"
+                        android:layout_marginBottom="2.5dp"
+                        android:minHeight="90dp"
+                        android:textColor="@color/white"
+                        tools:ignore="TextContrastCheck" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/labelMinimizationMeasureResponsible"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2.5dp"
+                    android:text="@string/responsible"
+                    android:textColor="@color/white" />
+
+                <EditText
+                    android:id="@+id/textViewMinimizationMeasureResponsible"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2.5dp"
+                    android:ems="10"
+                    android:hint="@string/personalName"
+                    android:importantForAutofill="no"
+                    android:inputType="textPersonName"
+                    android:minHeight="48dp"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <CheckBox
+            android:id="@+id/checkBoxMinimizationMeasureRegular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/regular"
+            android:textColor="@color/dim_gray" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            app:cardBackgroundColor="@color/light_gray"
+            app:cardCornerRadius="7dp"
+            app:cardPreventCornerOverlap="false">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/labelMinimizationMeasureTheDateOfThe"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/theDateOfThe"
+                    android:textColor="@color/white" />
+
+                <EditText
+                    android:id="@+id/dateViewMinimizationMeasureTheDateOfThe"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="ДД.ММ.ГГГГ"
+                    android:inputType="date"
+                    android:minHeight="48dp"
+                    android:textColor="@color/white"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+                <TextView
+                    android:id="@+id/labelMinimizationMeasureInterval"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/interval"
+                    android:textColor="@color/white"
+                    android:visibility="gone" />
+
+                <Spinner
+                    android:id="@+id/spinnerMinimizationMeasureInterval"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="48dp"
+                    android:visibility="gone"
+                    tools:ignore="SpeakableTextPresentCheck" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <CheckBox
+            android:id="@+id/checkBoxMinimizationMeasureClosed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/complete"
+            android:visibility="gone" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/buttonMinimizationMeasureSave"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:clickable="true"
+                android:src="@android:drawable/ic_menu_save"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:ignore="SpeakableTextPresentCheck" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textViewMinimizationMeasureDegradedMode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:rotation="20"
+        android:text="@string/degradedMode"
+        android:textColor="#33696969"
+        android:textSize="20sp"
+        android:translationY="200dp"
+        android:visibility="gone" />
+
+</FrameLayout>

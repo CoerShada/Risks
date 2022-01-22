@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">Risks</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="factoryName">Название предприятия</string>
+    <string name="two_factors_model">Двухфакторная модель оценки</string>
+    <string name="three_factors_model">Трехфакторная модель оценки</string>
+    <string name="rating_scale">Шкала оценки</string>
+    <string name="from">От</string>
+    <string name="to">До</string>
+    <string name="save">Сохранить</string>
+    <string name="name">Название</string>
+    <string name="back">Назад</string>
+    <string name="registry">Реестр</string>
+    <string name="registries">Реестры</string>
+    <string name="assessmentOfTheLikelihoodOfOccurrence">Оценка вероятности возникновения</string>
+    <string name="detectionProbabilityEstimate">Оценка вероятности обнаружения</string>
+    <string name="severityAssessment">Оценка тяжести последствий</string>
+    <string name="maginitudeOfRisk">Величина риска</string>
+    <string name="value">Значение</string>
+    <string name="description">Описание</string>
+    <string name="regular">Регулярно</string>
+    <string name="personalName">Имя</string>
+    <string name="responsible">Ответственный</string>
+    <string name="theDateOfThe">Дата проведения</string>
+    <string name="interval">Интервал</string>
+    <string name="day">День</string>
+    <string name="week">Неделя</string>
+    <string name="decade">Декада</string>
+    <string name="month">Месяц</string>
+    <string name="quarter">Квартал</string>
+    <string name="trimester">Триместр</string>
+    <string name="halfYear">Полугодие</string>
+    <string name="year">Год</string>
+    <string name="complete">Выполнено</string>
+    <string name="degradedMode">Режим ограниченной функциональности</string>
+</resources>
